@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alexander Naitsat's Homepage</title>
+
+		<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css"/>
+	-->
+	<script type="text/javascript" src="html/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="html/jquery/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="html/jquery/jquery-ui.min.css"/>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+		
+	</script>
+	<script type="text/javascript" src="html/JS/setMail.js?2"></script>
+	
+	<script type="text/javascript">  
+	function setVline(e){
+		a=$('.vline').first();
+		b=$('.paper-entry').last();
+		t=a.offset().top;
+        b=b.offset().top + b.outerHeight(true);
+		a.height(b-t-20);
+
+	}
+	$(window).resize(setVline);
+		function setTooltip(){
+			$('.paper-link').each(
+				function(){
+
+					$(this).tooltip({tooltipClass:'paper-size-tooltip',content: function() {
+						var element = $( this );
+						if ( element.is( "[data-size]" ) ) {
+							return element.attr( "data-size" )+ ' MB';
+						}
+
+					},'position':{my: 'center bottom', at: 'center top',of:$(this)}, hide: {duration:50},show:{duration:10},items:'a'});
+
+				}
+				);
+
+
+			
+			$('.teaser').each(
+				function(){
+				var parent=$(this);//.parent();
+				$(this).tooltip({
+
+
+
+					'position':{my: 'left top', at: 'left bottom',of:$(this)}, hide: {duration:0},tooltipClass:'teaser-text-tooltip',
+					content: '<div style="background-color:rgba(255,255,255,0);">'+$(this).attr('title')+'<hr style=color:white;"><span style="font-size:85%;color:rgb(230,230,230)"><span style="text-decoration:underline">Figure:</span> '+$(this).attr('alt')+'</span></div>'
+
+				});
+
+			}
+			);
+
+
+
+
+			
+			
+			
+			
+
+		}
+
+		function setEaster(){
+			fadeouttime=500;
+			fadeintime=6000;
+			$('#mepic').hover(
+				
+				function(){
+
+					$('#me2d').stop().animate({'opacity':0},fadeintime);
+					$('#me2d').promise().done(function(){$('#me3d').stop().animate({'opacity':1},fadeouttime);});
+
+			},
+			function(){$('#me2d').stop().animate({'opacity':1},fadeouttime);
+			$('#me3d').stop().animate({'opacity':0},fadeouttime);
+		}
+
+		);
+
+			$('#me3d').attr('src','pics/me3d.png');
+		}
+		function setOpacity(){
+			return;
+			hideopa=0.7;
+			fadeint=200;
+			fadeoutt=500;
+
+            $('.teaser').hover(  
+	function(){  
+		$('.teaser').parent().stop().animate({'opacity':hideopa},fadeint); /*,'background-color':'none'*/
+		$(this).parent().stop().animate({'opacity':1},fadeint);/*,'background-color':'rgb(246,245,244)'*/
+
+	},  
+	function(){  
+		$('.teaser').parent().stop().animate({'opacity':1},fadeoutt)/*,'background-color':'none'*/
+	});  
+
+}
+function setYears(){
+	$('li.paperyear').each(function(){
+	var element = $( this );
+						if ( element.is( "[year]" ) ) {
+							element.prepend('<hr class="fancy-line"></hr><div class="tab">'+element.attr('year')+"</div>")
+						}
+					});
+}
+</script>
+
+<script type="text/javascript" src="html/JS/tracking/track_clicks.js"></script>
+<link rel="stylesheet" type="text/css" href="html/css/main.css"/>
+
+</head>
+
+<body onload="setMail(); setEaster();setTooltip();setOpacity();
+
+
+
+setVline();
+$('.vline').hide();
+$('.vline').slideDown(1200);
+//setYears();
+
+
+	$('.fancy-line').each(function(ind){$(this).delay(ind*250+300).animate({
+    
+    width:'100%'
+},500);
+});
+" >
+
+	<div id="main" >
+		<div>
+
+			<div style="float:left;margin-right:2%">
+				<div id="mepic">
+					<img id="me2d" src="pics/alexn.jpg" style="width:120px;position:absolute;margin-left:10px" alt="front"  class="round-corner" />
+					<img id="me3d" style="width:130px;opacity:0;position:absolute" alt="background"   />
+					<img  src="pics/me3d.png" style="width:130px;visibility:hidden"  />
+				</div>	
+			</div>
+			<div >
+				<div class="heading">Alexander Naitsat</div>
+				<div style="font-size:98%">
+
+					<b>Email</b> <span class="emailplace">anaitsat@campus.technion.ac.il</span>
+					<br/><br/>
+				   I'm a Ph.D. student in the Department of Electrical Engineering at the Technion under the supervision of  Prof. 
+				   <a href="https://webee.technion.ac.il/people/zeevi/">Yehoshua Zeevi</a>. <br/>
+				   I'm holding B.Sc. in Computer Science with Mathematics and M.Sc. in Applied Mathematics from the Technion. 
+                   <br> <br/>
+				   During my doctoral studies, I had research internships at <a href= "http://blinkeye.com/"> Blink</a> and  <a href="https://www.ptc.com/en/about/ptc-israel"> PTC</a>, where I worked on eye-tracking methods and geometry processing tools for 3D modeling.
+				   Prior to my graduate studies, I was part of Intel's processor design team in Haifa. 
+				 <br> <br/> My main fields of interest are <span style="font-weight:bold"> Geometry Processing, Computer Graphics</span> and <span style="font-weight:bold">Computer Vision</span>.
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div style="clear:both">
+			
+
+		</div>
+		<div class="vline" > </div>
+		<!--  <hr class="fancy-line"/>
+		<div class="heading">Teaching</div>
+		1234: Introduction to Blabla 1 <a href= "https://github.com/AlexNaitsat"> notes </a>.<br> 
+		1235: Introduction to Blabla 2.<br> 
+		-->
+		<hr class="fancy-line" />
+		<div id="pub">
+			<span class="heading">Journal Papers</span>
+			<span style="color:rgb(100,150,180)">(hover over a paper image for a short summary)</span>
+			<ol style="padding:0px;list-style-type:none">
+			<li class="paperyear" year="2020">
+					<ol>
+
+					<li class="paper-entry" style="position:relative">
+
+							
+							<!--<div class="teaser">-->
+							<img alt="Illustration of inversion-free mappings with low distortions." src="html/projects/dist_inv_mapping/dist_inv_mapping.jpg" class="teaser"  title="The theory and application of distortion minimization and inversion-free mapping, including multi-resolution invariance and convex analysis of geometrical energies." />
+								<!--<div style="position:relative">
+									<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+								</div>
+							</div>-->
+							<div class="paper-cell">
+
+								<b>On Inversion-Free Mapping and Distortion Minimization</b><br/>
+								<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Gregory Naitzat, Yehoshua Y. Zeevi</span>
+									Technical Report 2020  <br/>
+									<a class="paper-link" href="html/projects/dist_inv_mapping/dist_inv_mapping.pdf" data-size="20">arXiv</a> | <a  href="html/projects/dist_inv_mapping/dist_inv_mapping_supp.pdf" data-size="2"> Supplemental</a> </a> 
+								</div>	
+						</div>
+
+					</div>
+					
+					<div style="clear:both;"></div>
+			<br> </br>	
+			</li>
+				</ol>
+					<ol>
+					<li class="paper-entry" style="position:relative">
+
+							
+							<!--<div class="teaser">-->
+							<img alt="Constrained parameterization and locally injective volumetric mapping with ABCD algorithm." src="html/projects/abcd/abcd_image.jpg" class="teaser"  title="A new block coordinate descent algorithm for optimizing geometric distortions and computing inversion-free maps in 2D and 3D." />
+								<!--<div style="position:relative">
+									<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+								</div>
+							</div>-->
+							<div class="paper-cell">
+
+								<b>Adaptive Block Coordinate Descent for Distortion Optimization</b><br/>
+								<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Yufeng Zhu, Yehoshua Y. Zeevi</span>
+									Computer Graphics Forum 2020 (Presented at SGP 2020) <br/>
+                                    <a class="paper-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.14043"> DOI</a> |
+									<a class="paper-link" href="html/projects/abcd/abcd_with_supplement_high.pdf" data-size="41">Paper</a> | <a  href="https://github.com/AlexNaitsat/ABCD_Algorithm" data-size="2">Code</a> | <a  href="https://www.youtube.com/watch?v=LCCODNn5d3E" data-size="2">Talk </a> 
+								</div>	
+								<!--<div style="position:relative">
+							<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+						</div>-->
+
+					</div>
+
+					<div style="clear:both;"></div>
+
+				</li>
+				</ol>
+				
+		</li>
+				</ol>
+					<ol>
+					<li class="paper-entry" style="position:relative">
+							<!--<div class="teaser">-->
+							<img alt="Optimal mapping of the gyroid surface induced by volumetric deformation of its enclosing volume." src="html/projects/gmod/gmod.jpg" class="teaser"  title="A local approach to computing bijective mappings on triangle and tetrahedral meshes." />
+								<!--<div style="position:relative">
+									<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+								</div>
+							</div>-->
+							<div class="paper-cell">
+								<b>Geometry-based Distortion Measures for Space Deformation</b><br/>
+								<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Emil Saucan, Yehoshua Y. Zeevi</span>
+									Graphical Models 2018 <br/>
+                                    <a class="paper-link" href="https://www.sciencedirect.com/science/article/abs/pii/S1524070318300407"> DOI</a> |
+									<a class="paper-link" href="html/projects/gmod/gmod.pdf" data-size="10">Paper</a>  
+								</div>	
+								<!--<div style="position:relative">
+							<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+						</div>-->
+
+					</div>
+
+					<div style="clear:both;"></div>
+
+				</li>
+				</ol>
+					<ol>
+					<li class="paper-entry" style="position:relative">
+							<!--<div class="teaser">-->
+							<img alt="Computing shape descriptors of brain segments" src="html/projects/medical/medical.jpg" class="teaser"  title="A shape analysis method for  detecting  changes in volumetric objects with applications to medical imaging." />
+								<!--<div style="position:relative">
+									<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+								</div>
+							</div>-->
+							<div class="paper-cell">
+								<b>Geometric Approach to Detecting Volumetric Changes in Medical Images</b><br/>
+								<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Emil Saucan, Yehoshua Y. Zeevi</span>
+									Journal of Computational and Applied Mathematics 2018<br/>
+									<a class="paper-link" href="https://www.sciencedirect.com/science/article/abs/pii/S0377042717303758">DOI</a> | <a  href="html/projects/medical/medical_chapter.pdf" >Related chapter</a> 
+								</div>	
+								<!--<div style="position:relative">
+							<div class="desc"  style="position:absolute;background-color:white;z-index:1">A low distortion bijective map between 2 surface-meshes.</div>
+						</div>-->
+
+					</div>
+
+					<div style="clear:both;"></div>
+
+				</li>
+		
+		<li>
+			<hr class="fancy-line"/>
+		<div class="heading">Conferences</div>
+		<ol>	
+		<li class="paper-entry">
+
+					<img alt="Hierarchical scheme for surface parameterization." class="teaser" src="html/projects/multi/multi.jpg"  title="A multi-resolution approach to locally injective mapping in 2D and 3D based on  initialization of  geometric optimization with solutions of decimated problems."/>
+
+					<div class="paper-cell">
+						<b>Multi-Resolution Approach to Computing Locally Injective Maps on Meshes</b><br/>
+						<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Yehoshua Y. Zeevi</span>
+							ACM SIGGRAPH 2019 Posters
+                            <br/> <a class="paper-link" href="https://dl.acm.org/doi/10.1145/3306214.3338591">DOI</a> |
+							<a class="paper-link" data-size="2" href="html/projects/multi/multi_res.pdf">Paper</a> | <a class="paper-link" data-size="2" href="html/projects/multi/multi.avi">Video</a> | <a href="html/projects/multi/siggraph_poster_multi.pdf">Poster</a>
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+        </li>
+
+				<ol>	
+		<li class="paper-entry">
+
+					<img alt="Landmarks detected from a  real and spoofed stereo images." class="teaser" src="html/projects/antispoof/antispoof.jpg"  title="Face anti-spoofing from RGB video based on facial landmarks and projective invariants."/>
+
+					<div class="paper-cell">
+						<b>Face Anti-Spoofing Based on Projective Invariants</b><br/>
+						<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>,  Yehoshua Y. Zeevi</span>
+							IEEE International Conference on Electrical Engineering, ICSEE 2018 
+							<br/> <a class="paper-link" href="https://ieeexplore.ieee.org/document/8646223">DOI</a> |
+                            <a class="paper-link" data-size="7" href="html/projects/antispoof/antispoofing.pdf">Paper</a> | <a href="https://github.com/AlexNaitsat/antispoof">Code</a>
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+       </li>
+				<ol>	
+		<li class="paper-entry">
+
+					<img alt="Canonical parameterization of tetrahedral meshes onto a ball." class="teaser" src="html/projects/cbms/cbms.jpg"  title="A short presentation  of the volumetric  method for detecting changes in  medical images"/>
+
+					<div class="paper-cell">
+						<b>A Differential Geometry Approach for Change Detection in Medical Images</b><br/>
+						<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Emil Saucan, Yehoshua Y. Zeevi</span>
+							International Symposium on Computer-Based Medical Systems, IEEE CBMS 2017
+							<br/> 
+                             <a class="paper-link" href="https://ieeexplore.ieee.org/document/8104162">DOI</a> |
+                            <a class="paper-link" data-size="2" href="html/projects/cbms/cbms17_cr.pdf">Paper</a>  | <a  href="html/projects/cbms/cbms17_slides.pdf">Presentation</a> 
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+				</li>
+				
+				<li class="paper-entry">
+
+					<img alt="Basic quasi-conformal mappings in 3D" class="teaser" src="html/projects/grapp/grapp_2015.jpg"  title="Demonstration of quasi-conformal volumetric mappings and various methods for assessing the extent of conformal distortion on voxelized  domains  and tetrahedral meshes."/>
+
+					<div class="paper-cell">
+						<b>Volumetric Quasi-Conformal Mappings</b><br/>
+						<div class="paper-data"><span class="authors"><span class="hi">Alexander Naitsat</span>, Emil Saucan, Yehoshua Y. Zeevi</span>
+							VISIGRAPP 2015
+							<br/> <a class="paper-link" data-size="11" href="html/projects/grapp/grapp_2015.pdf">Paper</a>
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+				</li>		
+			</ol>
+			</ol>
+
+				<li>
+			<hr class="fancy-line"/>
+
+		<div class="heading">Others</div>
+			<ol>	
+				<li class="paper-entry">
+
+					<img alt="Illustration of a general problem" class="teaser" src="html/projects/pixel_club/pixel_club.jpg"  title="A seminar lecture on methods for optimal mapping of geometric data."/>
+
+					<div class="paper-cell">
+						<b>Optimal Mappings of Geometric Data with Applications in 2D and 3D</b><br/>
+						<div class="paper-data">
+							Pixel Club Seminar
+							<br/>  <a class="paper-link"  href="https://www.youtube.com/watch?v=05NBLTlidnY">Talk</a> 
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+				</li>
+			
+				<li class="paper-entry">
+
+					<img alt="Task-based functional networks  that show voxel-wise changes in synchronization." class="teaser" src="html/projects/brain_ricci/brain_ricci.jpg"  title="Geometric method for brain network analysis."/>
+
+					<div class="paper-cell">
+						<b>Curvature-based Methods for Brain Network Analysis</b><br/>
+						<div class="paper-data"><span class="authors"><span class="hi">Melanie Weber</span>, Johannes Stelzer, Emil Saucan, Alexander Naitsat, Gabriele Lohmann, Jürgen Jost</span>
+						</div>
+						<div class="paper-data">
+							Technical Report
+							<br/>  <a class="paper-link" href="https://arxiv.org/abs/1707.00180">arXiv</a> 
+						</div>
+
+					</div>
+					<div style="clear:left;"></div>
+				</li>
+			
+			
+			</ol>
+		</li>
+	</ol>
+</body>
+</html>
+
